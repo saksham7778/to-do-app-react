@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './to-do2.jpg';
 import './App.css';
 
 class App extends React.Component {
@@ -17,7 +17,6 @@ class App extends React.Component {
       const newItem = {
         id: Date.now(),
         value: todoValue,
-        isDone: false
       };
       const list = [...this.state.list];
       list.push(newItem);
@@ -41,12 +40,10 @@ class App extends React.Component {
 
 
   render() {
-
     return (
       <div>
-        <img src={logo} width="100" height="100" alt="app-logo" className="logo" />
+        <img src={logo} width="100" height="100" alt="logo" className="logo" />
         <h1 className="app-title">ToDo App</h1>
-       
         <div className="container">
           Add an Item....
           <br />
@@ -54,28 +51,24 @@ class App extends React.Component {
             type="text"
             className="input-text"
             placeholder="Write a Todo"
-            requiredvalue={this.state.newItem}
-            onChange={e => this.updateInput(e.target.value)}/>
-
+            required
+            value={this.state.newItem}
+            onChange={e => this.updateInput(e.target.value)}
+          />
           <button
             className="add-btn"
             onClick={() => this.addItem(this.state.newItem)}
-            disabled={!this.state.newItem.length} >
+            disabled={!this.state.newItem.length}
+          >
             Add Todo
           </button>
-          
           <div className="list">
             <ul>
 
-            {/* to display the lists */}
-            {this.state.list.map(item => {
+              {this.state.list.map(item => {
                 return (
                   <li key={item.id}>
-                    <input
-                      type="checkbox"
-                      name="idDone"
-                      checked={item.isDone}
-                    />
+                    
                     {item.value}
                     <button
                       className="btn"
@@ -88,20 +81,17 @@ class App extends React.Component {
               })}
 
               <li>
-                <input type="checkbox" name="" id="" />
-                Sleep - well
+                {/* <input type="checkbox" name="" id="" /> */}
+                Record youtube videos
                 <button className="btn">Delete</button>
               </li>
 
             </ul>
           </div>
-
         </div>
-      
       </div>
     );
   }
-
 }
 
 export default App;
