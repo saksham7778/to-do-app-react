@@ -54,20 +54,45 @@ class App extends React.Component {
             type="text"
             className="input-text"
             placeholder="Write a Todo"
-            required/>
+            requiredvalue={this.state.newItem}
+            onChange={e => this.updateInput(e.target.value)}/>
 
           <button
-            className="add-btn">
+            className="add-btn"
+            onClick={() => this.addItem(this.state.newItem)}
+            disabled={!this.state.newItem.length} >
             Add Todo
           </button>
           
           <div className="list">
             <ul>
+
+            {/* to display the lists */}
+            {this.state.list.map(item => {
+                return (
+                  <li key={item.id}>
+                    <input
+                      type="checkbox"
+                      name="idDone"
+                      checked={item.isDone}
+                    />
+                    {item.value}
+                    <button
+                      className="btn"
+                      onClick={() => this.deleteItem(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </li>
+                );
+              })}
+
               <li>
                 <input type="checkbox" name="" id="" />
-                Record youtube videos
+                Sleep - well
                 <button className="btn">Delete</button>
               </li>
+
             </ul>
           </div>
 
