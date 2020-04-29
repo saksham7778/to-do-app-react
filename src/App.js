@@ -82,7 +82,7 @@ class App extends React.Component {
 
               <li>
                 {/* <input type="checkbox" name="" id="" /> */}
-                Record youtube videos
+                Go to bed!
                 <button className="btn">Delete</button>
               </li>
 
